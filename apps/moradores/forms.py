@@ -28,8 +28,4 @@ class MoradorForm(forms.ModelForm):
         }
 
 
-        error_messages = {
-            'morador_responsavel': {
-                'required': 'Por favor, informe o nome do morador responsável por autorizar a entrada do visitante!'
-            }
-        }
+    
