@@ -8,35 +8,51 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
     </div>
-    <h4 class="mb-3 mt-4 text-primary">
-        Informações pessoais
-    </h4>
 
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>Nome completo</label>
-                <input type="text" class="form-control" value="{{ morador.nome_completo }}" disabled>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <h4 class="mb-3 text-primary">
+                Informações Pessoais
+            </h4>
+
+            <p class="mb-5 ml-1">
+                <small>
+                    todos os dados do morador
+                </small>
+            </p>
+
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Nome completo</label>
+                    <input type="text" class="form-control" value="{{ morador.nome_completo }}" disabled>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>CPF</label>
+                    <input type="text" class="form-control" value="{{ morador.get_cpf }}" disabled>
+                </div>
             </div>
 
-            <div class="form-group col-md-6">
-                <label>CPF</label>
-                <input type="text" class="form-control" value="{{ morador.get_cpf }}" disabled>
-            </div>
-        </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Data de nascimento</label>
+                    <input type="text" class="form-control" value="{{ morador.data_nascimento }}" disabled>
+                </div>
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>Data de nascimento</label>
-                <input type="text" class="form-control" value="{{ morador.data_nascimento }}" disabled>
-            </div>
+                <div class="form-group col-md-6">
+                    <label>Placa do veículo</label>
+                    <input type="text" class="form-control" value="{{ morador.placa_veiculo }}" disabled>
+                </div>
 
-            <div class="form-group col-md-6">
-                <label>Placa do veículo</label>
-                <input type="text" class="form-control" value="{{ morador.placa_veiculo }}" disabled>
+                <div class="form-group col-md-6">
+                    <label>Número da casa</label>
+                    <input type="text" class="form-control" value="{{ morador.numero_casa }}" disabled>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
+
 </div>
 
 {% endblock %}

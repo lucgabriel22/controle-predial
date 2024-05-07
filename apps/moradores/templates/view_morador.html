@@ -1,17 +1,28 @@
 {% extends "base.html" %}
 {% load widget_tweaks %}
+{% load static %}
 
 {% block conteudo %}
 <div class="container">
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <h1 class="mb-4">{{ nome_pagina }}</h1>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
+    </div>
+
+                        <div class="card shadow mb-4">
+                            <div class="card-body">
+                                <h4 class="mb-3 text-primary">
+                                    Database moradores
+                                </h4>
+
+                                <p class="mb-5 ml-1">
+                                    <small>
+                                        Presença de todos os moradores ativos no prédio
+                                    </small>
+                                </p>
             
             <table class="table">
                 <thead>
-                    <h4 class="mb-3 mt-4 text-primary">
-                        DATABASE
-                    </h4>
+                    
                     <tr>
                         <th>Nome</th>
                         <th>CPF</th>
@@ -22,7 +33,7 @@
                         <!-- Add more columns as needed -->
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tabela-corpo">
                     {% for morador in moradores %}
                         <tr>
                             <td>{{ morador.nome_completo }}</td>
@@ -41,6 +52,10 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <script src={% static 'js/ordernarTabela.js' %}></script>
         </div>
     </div>
+
+
+
 {% endblock %}
