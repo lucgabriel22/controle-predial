@@ -11,6 +11,8 @@ from apps.visitantes.views import (
     finalizar_visita,
 )
 
+from apps.moradores.views import registrar_morador, mostrar_morador
+
 
 
 
@@ -63,4 +65,13 @@ urlpatterns = [
         name = 'finalizar_visita',
     )
 
+]
+
+
+urlpatterns += [
+    path('registrar-morador/',
+    registrar_morador, 
+    name='registrar_morador'),
+
+   
 ]

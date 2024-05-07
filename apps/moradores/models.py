@@ -30,3 +30,4 @@ class Moradores(models.Model):
         db_table = 'morador'
 
 
+

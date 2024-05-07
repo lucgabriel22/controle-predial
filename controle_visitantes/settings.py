@@ -28,6 +28,7 @@ INSTALLED_APPS += [
     "porteiros",
     "visitantes",
     "dashboard",
+    "moradores",
 
 ]
 
