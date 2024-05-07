@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block conteudo %}
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <h1 class="mb-4">{{ nome_pagina }}</h1>
+            
+            <table class="table">
+                <thead>
+                    <h4 class="mb-3 mt-4 text-primary">
+                        DATABASE
+                    </h4>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Data de nascimento</th>
+                        <th>Número da casa</th>
+                        <th>Placa do veículo</th>
+                        <th>Mais informações</th>
+                        <!-- Add more columns as needed -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for morador in moradores %}
+                        <tr>
+                            <td>{{ morador.nome_completo }}</td>
+                            <td>{{ morador.get_cpf }}</td>
+                            <td>{{ morador.data_nascimento }}</td>
+                            <td>{{ morador.numero_casa }}</td>
+                            <td>{% if morador.placa_veiculo %}
+                                {{ morador.placa_veiculo }}
+                            {% else %}
+                                N/A
+                            {% endif %}</td>
+                            <td><a href="{% url 'info_morador' id=morador.id %}">Informações</a></td>
+                            
+                            <!-- Add more columns as needed -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

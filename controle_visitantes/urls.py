@@ -3,6 +3,7 @@ from django.urls import path
 
 from django.contrib.auth import views as auth_views
 
+
 from apps.dashboard.views import index
 
 from apps.visitantes.views import (
@@ -11,7 +12,8 @@ from apps.visitantes.views import (
     finalizar_visita,
 )
 
-from apps.moradores.views import registrar_morador, mostrar_morador
+from apps.moradores.views import registrar_morador
+from apps.moradores.views import view_morador, info_morador
 
 
 
@@ -69,9 +71,23 @@ urlpatterns = [
 
 
 urlpatterns += [
-    path('registrar-morador/',
-    registrar_morador, 
-    name='registrar_morador'),
+    path(
+        'registrar-morador/',
+        registrar_morador, 
+        name='registrar_morador'
+    ),
+
+    path(
+        'moradores/',
+        view_morador,
+        name='view_morador'
+    ),
+
+    path(
+        'morador/<int:id>/',
+        info_morador,
+        name = 'info_morador'
+    ),
 
    
 ]
