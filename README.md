@@ -1,4 +1,4 @@
-SystemPRO, sistema criado para gerenciamento inteligente e rápido para prédios.
+SystemX, sistema criado para gerenciamento inteligente e rápido para prédios.
 
 Sistema inclui:
 
