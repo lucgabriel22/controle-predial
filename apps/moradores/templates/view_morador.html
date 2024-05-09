@@ -33,6 +33,7 @@
                         <th>Número da casa</th>
                         <th>Placa do veículo</th>
                         <th>Mais informações</th>
+                        <th>Morador</th>
                         <!-- Add more columns as needed -->
                     </tr>
                 </thead>
@@ -49,8 +50,12 @@
                                 N/A
                             {% endif %}</td>
                             <td><a href="{% url 'info_morador' id=morador.id %}">Informações</a></td>
+                            <td>{% if morador.foto_morador %}
+                                    FOTO
+                                {% else %}
+                                    N/A
+                                {% endif %}</td>
                             
-                            <!-- Add more columns as needed -->
                         </tr>
                     {% endfor %}
                 </tbody>

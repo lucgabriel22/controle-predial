@@ -20,6 +20,13 @@ class Moradores(models.Model):
         max_length=7,
         blank=True
     )
+
+    foto_morador = models.ImageField(
+        upload_to='imagens/',
+        blank=False
+        
+
+    )
     
 
     def get_cpf(self):

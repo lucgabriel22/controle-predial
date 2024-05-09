@@ -2,6 +2,8 @@
 
 {% load widget_tweaks %}
 
+{% load static %}
+
 {% block conteudo %}
 
 {% block title %}Informações Morador{% endblock %}
@@ -51,9 +53,17 @@
                     <label>Número da casa</label>
                     <input type="text" class="form-control" value="{{ morador.numero_casa }}" disabled>
                 </div>
+
+                <div class="form-group col-md-6">
+                    <label>Foto</label>
+                    {% if morador.foto_morador %}
+                    <img src="{{ morador.foto_morador.url }}" height="200" width="200">
+                    {% endif %}
+                </div>
             </div>
         </form>
     </div>
+    
 
 </div>
 

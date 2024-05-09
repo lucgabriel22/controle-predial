@@ -20,7 +20,7 @@ def registrar_morador(request):
     form = MoradorForm()
 
     if request.method == "POST":
-        form = MoradorForm(request.POST)
+        form = MoradorForm(request.POST, request.FILES)
 
         if form.is_valid():
             morador = form.save(commit=False)
@@ -33,7 +33,7 @@ def registrar_morador(request):
                 "Morador registrado com sucesso"
             )
 
-            return redirect("index")
+            return redirect("view_morador")
 
     context = {
         "nome_pagina": "Registrar morador",

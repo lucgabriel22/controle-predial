@@ -15,6 +15,10 @@ from apps.visitantes.views import (
 from apps.moradores.views import registrar_morador
 from apps.moradores.views import view_morador, info_morador
 
+from django.conf.urls.static import static
+from django.conf import settings
+from django.views.static import serve
+
 
 
 
@@ -66,7 +70,6 @@ urlpatterns = [
         finalizar_visita,
         name = 'finalizar_visita',
     )
-
 ]
 
 
@@ -88,6 +91,8 @@ urlpatterns += [
         info_morador,
         name = 'info_morador'
     ),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-   
-]
+
+
+
