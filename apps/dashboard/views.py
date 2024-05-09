@@ -42,13 +42,13 @@ def index(request):
     pagina_obj = visitantes_paginados.get_page(numero_pagina)
 
     context = {
-        "nome_pagina": "Página inicial",
         'todos_visitantes': todos_visitantes,
         "visitantes_em_visita": visitantes_em_visita,
         "visitantes_aguardando": visitantes_aguardando,
         "visitantes_finalizado": visitantes_finalizado,
         "visitantes_mes": visitantes_mes,
-        "pagina_obj": pagina_obj
+        "pagina_obj": pagina_obj,
+        "porteiro_nome" : request.user.porteiro,
     }
 
     return render(request, "index.html", context)
