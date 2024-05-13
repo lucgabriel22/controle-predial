@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% load static %}
+
+{% block conteudo %}
+
+{% block title %}Informações Morador{% endblock %}
+
+
+
+
+<div class="container">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <h4 class="mb-3 text-primary">
+                Atualizar Informações Prediais
+            </h4>
+
+            
+        <div class="card">
+            <div class="card-body">
+                <form method="post" action="{% url "moradores:atualizar" pk=moradores.pk %}">
+                    {% csrf_token %}
+                    {{ form.numero_casa }}
+                    {{ form.placa_veiculo }}
+                    <br>
+                    <button type="submit" class="btn btn-primary" value="Update">Salvar</button>
+                </form>
+            </div>
+        </div>
+        
+    
+            
+    </div> 
+
+{% endblock %}

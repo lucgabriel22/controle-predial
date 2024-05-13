@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% load static %}
+
+{% block conteudo %}
+
+{% block title %}Informações Morador{% endblock %}
+
+
+
+
+<div class="container">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <h4 class="mb-3 text-primary">
+                Deletar cadastro de morador
+            </h4>
+        </div>
+    </div>
+
+
+
+<div class="card">
+    <div class="card-body">
+        <h4>Tem certeza que deseja remover {{morador.nome_completo}} do sistema?</h4>
+        <hr>
+        <form method="POST" action="{% url 'moradores:deletar' pk=morador.pk %}">
+            {% csrf_token %}
+            <p class="card-text">
+                {{ morador.nome_completo }}
+                            {{ morador.get_cpf }}
+                            {{ morador.data_nascimento }}
+                            {{ morador.numero_casa }}
+                            {{morador.placa_veiculo}}
+                                
+
+            <button type="submit" class="btn btn-danger">Remover</button>
+            <a href="{% url 'index' %}" class="btn btn-secondary">Voltar</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

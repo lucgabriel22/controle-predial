@@ -1,72 +1,91 @@
-from django.contrib import messages
-from django.http import HttpResponse
-from django.shortcuts import (
-    render, 
-    redirect, 
-    get_object_or_404
-    
-)
-
 from apps.moradores.forms import MoradorForm
 from moradores.models import Moradores
-from django.contrib.auth.decorators import login_required
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 
 
-@login_required
-def registrar_morador(request):
-
-    form = MoradorForm()
-
-    if request.method == "POST":
-        form = MoradorForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            morador = form.save(commit=False)
-            morador.registrado_por = request.user.porteiro
-
-            morador.save()
-
-            messages.success(
-                request,
-                "Morador registrado com sucesso"
-            )
-
-            return redirect("view_morador")
-
-    context = {
-        "nome_pagina": "Registrar morador",
-        "form": form,
-    }
-
-    return render(request, "registrar_morador.html", context)
 
 
-@login_required
-def view_morador(request):
-    moradores = Moradores.objects.all()
+class MoradorDetailView(LoginRequiredMixin, DetailView):
+    model = Moradores
+    template_name = 'info_morador.html'
+    context_object_name = 'morador'  # Renomeie para 'morador' para representar um único objeto
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+
+class MoradorCreateView(LoginRequiredMixin, CreateView):
+    model = Moradores
+    # Formulário que será usado para criar a instância.
+    form_class = MoradorForm
+    template_name = 'registrar_morador.html'
+    success_url = reverse_lazy('index')
+
+
+class MoradorUpdateView(LoginRequiredMixin, UpdateView):
+    model = Moradores
+    form_class = MoradorForm
+    template_name = 'atualizar_morador.html'
+    context_object_name = 'moradores'
+    success_url = reverse_lazy('index')
+    
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
+
+
+class MoradorListView(LoginRequiredMixin, ListView):
+    model = Moradores
+    template_name = 'view_morador.html'
+    context_object_name = 'moradores'
+    paginate_by = 5
+
+    def get_queryset(self):
+        # Ordene the QuerySet pelo a campo específico, for example, 'criado'
+        return Moradores.objects.all().order_by('-numero_casa')
+
+
+class MoradorDatatableView(LoginRequiredMixin, ListView):
+    model = Moradores
+    template_name = 'view_morador.html'
+    context_object_name = 'moradores'
+    paginate_by = 5
+
+    def get_queryset(self):
+        # Ordene the QuerySet pelo a campo específico, for example, 'criado'
+        return Moradores.objects.all().order_by('-numero_casa')
+
+
+class MoradorDeleteView(LoginRequiredMixin, DeleteView):
+    model = Moradores
+    template_name = 'deletar_morador.html'
+    success_url = reverse_lazy('index')
+
+
+
+
+
+
+
+
 
     
 
-    context = {
-        "nome_pagina": "Lista de moradores",
-        "moradores": moradores,
-    }
 
-    return render(request, "view_morador.html", context)
 
-def info_morador(request, id):
-    
-    
-    morador = get_object_or_404(Moradores, id=id)
 
-    context = {
-        "nome_pagina": "Informações do morador",
-        "morador": morador,
-    }
 
-    return render(request, "info_morador.html", context)
+   
+
+
+
+
 
 
 

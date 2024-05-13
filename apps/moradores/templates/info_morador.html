@@ -29,47 +29,56 @@
                 <div class="d-flex justify-content-end align-items-start top-right">
                     <div class="card" style="width: 10rem;">
                         {% if morador.foto_morador %}
-                        <img class="img-thumbnail" src="{{ morador.foto_morador.url }}" alt="Card image cap" width="200px" height="200px">
+                        <img class="img-thumbnail" src="{{ morador.foto_morador.url }}" alt="Card image cap" width="200" height="200">
                         {% endif %}
                     </div>
                 </div>
             </div>
         </div>
+
+        <div>ㅤ</div>
+        <div>ㅤ</div>
+        <div>ㅤ</div>
+        <div>ㅤ</div>
+        <div>ㅤ</div>
         
+    
+        <form>
             
-            
-                <form>
-                        <div class="form-row mt-5">
-                            <div class="form-group col-md-6">
-                                <label>Nome completo</label>
-                                <input type="text" class="form-control" value="{{ morador.nome_completo }}" disabled>
-                            </div>
-                
-                            <div class="form-group col-md-6">
-                                <label>CPF</label>
-                                <input type="text" class="form-control" value="{{ morador.get_cpf }}" disabled>
-                            </div>
-                        </div>
-                
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label>Data de nascimento</label>
-                                <input type="text" class="form-control" value="{{ morador.data_nascimento }}" disabled>
-                            </div>
-                
-                            <div class="form-group col-md-6">
-                                <label>Placa do veículo</label>
-                                <input type="text" class="form-control" value="{{ morador.placa_veiculo }}" disabled>
-                            </div>
-                
-                            <div class="form-group col-md-6">
-                                <label>Número da casa</label>
-                                <input type="text" class="form-control" value="{{ morador.numero_casa }}" disabled>
-                            </div>
-                        </div>
-                </form>
-           
+                <div class="form-row mt-5">
+                    <div class="form-group col-md-6">
+                        <label>Nome completo</label>
+                        <input type="text" class="form-control" value="{{ morador.nome_completo }}" disabled>
+                    </div>
 
+                    <div class="form-group col-md-6">
+                        <label>CPF</label>
+                        <input type="text" class="form-control" value="{{ morador.get_cpf }}" disabled>
+                    </div>
+                </div>
 
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Data de nascimento</label>
+                        <input type="text" class="form-control" value="{{ morador.data_nascimento }}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Placa do veículo</label>
+                        <input type="text" class="form-control" value="{{ morador.placa_veiculo }}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Número da casa</label>
+                        <input type="text" class="form-control" value="{{ morador.numero_casa }}" disabled>
+                    </div>
+                </div>
+        </form>
+        <div class="card-footer">
+            <a href="{% url 'moradores:deletar' pk=morador.pk %}" class="btn btn-danger">Remover</a>
+            <a href="{% url 'moradores:atualizar' pk=morador.pk %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'moradores:listar' %}" class="btn btn-secondary">Voltar</a>
+      </div> 
+    </div> 
 
 {% endblock %}

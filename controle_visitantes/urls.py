@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from django.contrib.auth import views as auth_views
 
@@ -12,12 +12,20 @@ from apps.visitantes.views import (
     finalizar_visita,
 )
 
-from apps.moradores.views import registrar_morador
-from apps.moradores.views import view_morador, info_morador
+from apps.moradores.views import (
+    MoradorCreateView,
+    MoradorListView,
+    MoradorUpdateView,
+    MoradorDeleteView,
+    MoradorDetailView,
+    MoradorDatatableView,
+    
+)
+
 
 from django.conf.urls.static import static
 from django.conf import settings
-from django.views.static import serve
+from apps.moradores import views
 
 
 
@@ -69,29 +77,12 @@ urlpatterns = [
         'visitantes/<int:id>/finalizar-visita',
         finalizar_visita,
         name = 'finalizar_visita',
-    )
+    ),
+
+    path('moradores/', include(('apps.moradores.urls', 'moradores'), namespace='moradores'))
 ]
 
-
-urlpatterns += [
-    path(
-        'registrar-morador/',
-        registrar_morador, 
-        name='registrar_morador'
-    ),
-
-    path(
-        'moradores/',
-        view_morador,
-        name='view_morador'
-    ),
-
-    path(
-        'morador/<int:id>/',
-        info_morador,
-        name = 'info_morador'
-    ),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 
