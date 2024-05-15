@@ -1,5 +1,5 @@
 from django import forms
-from visitantes.models import Visitantes
+from .models import Visitantes
 
 class VisitanteForm(forms.ModelForm):
     class Meta:

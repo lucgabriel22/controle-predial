@@ -1,14 +1,16 @@
 import os
 import sys
+from pathlib import Path
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "l6v@-@(c6-el@onp)con-oj==l)a2_hxt#3yg#i#2%71lszgx6"
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['*']
+
 DEBUG = True
 
-sys.path.append(
-    os.path.join(BASE_DIR, "apps"))
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -24,11 +26,11 @@ INSTALLED_APPS += [
 ]
 
 INSTALLED_APPS += [
-    "usuarios",
-    "porteiros",
-    "visitantes",
-    "dashboard",
-    "moradores",
+    "apps.usuarios",
+    "apps.porteiros",
+    "apps.visitantes",
+    "apps.dashboard",
+    "apps.moradores",
 
 ]
 

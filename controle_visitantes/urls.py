@@ -18,7 +18,6 @@ from apps.moradores.views import (
     MoradorUpdateView,
     MoradorDeleteView,
     MoradorDetailView,
-    MoradorDatatableView,
     
 )
 

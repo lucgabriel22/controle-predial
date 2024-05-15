@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseNotAllowed
 
 
-from visitantes.models import Visitantes
-from visitantes.forms import VisitanteForm, AutorizaVisitanteForm
+from .models import Visitantes
+from .forms import VisitanteForm, AutorizaVisitanteForm
 
 from datetime import datetime
 

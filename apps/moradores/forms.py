@@ -1,5 +1,5 @@
 from django import forms
-from moradores.models import Moradores
+from .models import Moradores
 
 
 class MoradorForm(forms.ModelForm):

@@ -10,7 +10,6 @@ from apps.moradores.views import (
     MoradorUpdateView,
     MoradorDeleteView,
     MoradorDetailView,
-    MoradorDatatableView,
     
 )
 
@@ -34,11 +33,6 @@ urlpatterns = [
         name='listar'
     ),
 
-    path(
-        'datatable/',
-        views.MoradorDatatableView.as_view(),
-        name='datatable'
-    ),
 
     path(
         '<int:pk>',
