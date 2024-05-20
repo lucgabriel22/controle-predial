@@ -12,14 +12,7 @@ from apps.visitantes.views import (
     finalizar_visita,
 )
 
-from apps.moradores.views import (
-    MoradorCreateView,
-    MoradorListView,
-    MoradorUpdateView,
-    MoradorDeleteView,
-    MoradorDetailView,
-    
-)
+
 
 
 from django.conf.urls.static import static
